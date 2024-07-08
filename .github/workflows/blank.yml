@@ -28,7 +28,7 @@ jobs:
         uses: thgbrb/setup-environment@v1
         with:
           # Name of env file
-          environment-config-file: .github/variables/vars.env
+          environment-config-file: ".github/variables/vars.env"
       - name: Run a multi-line script
         run: |
           echo "$DATABASE_NAME"
