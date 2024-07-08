@@ -38,6 +38,7 @@ jobs:
         run: |
           echo "$DATABASE_NAME"
           echo ${{ env.DATABASE_NAME }}
+          echo ${{ vars.DATABASE_NAME }}
           echo ${DATABASE_NAME}
         env:
             DATABASE_NAME: ${{ vars.DATABASE_NAME }}
