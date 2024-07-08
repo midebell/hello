@@ -31,7 +31,7 @@ jobs:
         uses: thgbrb/setup-environment@main
         with:
           environment-config-file: "setup_dev.env"
-          section-name: "API_LOREM_IPSUM"
+          # section-name: "API_LOREM_IPSUM"
       - name: hello
         run: |
           echo ${{ env.AWS_REGION }}
