@@ -24,19 +24,20 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-      - name: Load release-candidate vars
-        uses: thgbrb/setup-environment@v1
+      - name: Load development vars
+        id: set_env_development
+        # if: |
+        #   github.ref == 'refs/heads/development'
+        uses: thgbrb/setup-environment@main
         with:
-          # Name of env file
-          environment-config-file: ".github/variables/vars.env"
+          environment-config-file: "setup_dev.env"
+          # section-name: "API_LOREM_IPSUM"
       - name: Run a multi-line script
         run: |
           echo "$DATABASE_NAME"
           echo ${{ env.DATABASE_NAME }}
           echo ${{ vars.DATABASE_NAME }}
           echo ${DATABASE_NAME}
-        env:
-            DATABASE_NAME: ${{ vars.DATABASE_NAME }}
         shell: bash
 # In this example, all key from default section and
 # grouped into section named API_LOREM_IPSUM will be loaded to environment variables.
