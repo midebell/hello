@@ -35,7 +35,8 @@ jobs:
       - name: hello
         run: |
           echo ${{ env.TEST }}
-          echo ${{ env.UI }}
+          echo ${{ env.DATABASE_NAME }}
+          echo ${{ env.UI_PAGE }}
 # In this example, all key from default section and
 # grouped into section named API_LOREM_IPSUM will be loaded to environment variables.
   # qa:
