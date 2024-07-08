@@ -25,10 +25,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      - uses: university-of-york/ds-devtool-setEnvVars@v3
-        with:
-            envFile: 'staging.env'
+      # - uses: university-of-york/ds-devtool-setEnvVars@v3
+      #   with:
+      #       envFile: 'staging.env'
 
+      - name: Set Environment Variables
+        uses: tw3lveparsecs/github-actions-set-variables@latest
+        with:
+          envFilePath: 'staging.env'
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
