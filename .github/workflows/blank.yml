@@ -32,7 +32,7 @@ jobs:
       - name: Set Environment Variables
         uses: tw3lveparsecs/github-actions-set-variables@latest
         with:
-          envFilePath: 'my_staging'
+          envFilePath: ./github/variables/vars.env
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
