@@ -34,8 +34,8 @@ jobs:
           section-name: "API_LOREM_IPSUM"
       - name: hello
         run: |
-          echo ${{ env.AWS_REGION }}
-          echo ${{ env.DOCKER_IMAGE }}
+          echo ${{ env.TEST }}
+          echo ${{ env.UI }}
 # In this example, all key from default section and
 # grouped into section named API_LOREM_IPSUM will be loaded to environment variables.
   # qa:
