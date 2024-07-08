@@ -32,13 +32,12 @@ jobs:
         with:
           environment-config-file: "setup_dev.env"
           # section-name: "API_LOREM_IPSUM"
-      - name: Run a multi-line script
+      - name: hello
         run: |
-          echo "$DATABASE_NAME"
-          echo ${{ env.DATABASE_NAME }}
-          echo ${{ vars.DATABASE_NAME }}
-          echo ${DATABASE_NAME}
-        shell: bash
+          echo "$AWS_REGION"
+          echo ${AWS_REGION}
+          echo ${{ vars.AWS_REGION }}
+          echo ${{ env.AWS_REGION }}
 # In this example, all key from default section and
 # grouped into section named API_LOREM_IPSUM will be loaded to environment variables.
   # qa:
