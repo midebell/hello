@@ -37,4 +37,5 @@ jobs:
           echo ${DATABASE_NAME}
         env:
             DATABASE_NAME: ${{ vars.DATABASE_NAME }}
+        shell: bash
 
