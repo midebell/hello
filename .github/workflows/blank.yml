@@ -24,7 +24,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Load environment from YAML
-      uses: doughepi/yaml-env-action
+      uses: doughepi/yaml-env-action@main
       with:
         files: dev.yml 
     - run: |
