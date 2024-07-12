@@ -22,6 +22,14 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Load .env file
+        uses: natterstefan/action-next-env@v1
+        with:
+          environment: development
+      - name: Some other action
+        run: |
+          echo "HELLO Variable: ${{ env.HELLO }}"
+        shell: bash
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       # - uses: actions/checkout@v4
       # - name: Load development vars
@@ -37,15 +45,7 @@ jobs:
       #     echo ${{ env.AWS_REGION }}
       #     echo ${{ env.API_PATH }}
           # echo ${{ env.DATABASE_NAME }}
-      - name: Load .env file
-        uses: natterstefan/action-next-env@v1
-        with:
-          path: .env.test
-          environment: test
 
-      - name: Some other action
-        run: |
-          echo "HELLO Variable: ${{ env.HELLO }}"
 # In this example, all key from default section and
 # grouped into section named API_LOREM_IPSUM will be loaded to environment variables.
   # qa:
