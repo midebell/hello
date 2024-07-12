@@ -22,14 +22,16 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Load .env file
-        uses: natterstefan/action-next-env@v1
-        with:
-          environment: development
-      - name: Some other action
-        run: |
-          echo "HELLO Variable: ${{ env.HELLO }}"
-        shell: bash
+    - uses: duskmoon314/action-load-env@v1
+      id: load-env
+      with:
+        files: |
+          .env.*
+  # do anything you want with the env or outputs
+    - run: |
+        echo ${{ steps.load-env.outputs.DATABASE_NAME }}
+        echo ${{ steps.load-env.outputs.HELLO }}
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       # - uses: actions/checkout@v4
       # - name: Load development vars
