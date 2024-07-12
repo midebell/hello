@@ -23,14 +23,18 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - uses: actions/checkout@v4
-    - name: export env
-      uses: krisalay/export-env@v1.0.0
+    - uses: cardinalby/export-env-action@v2
+      id: exportStep
       with:
-        filename: .env.development
-
-    - name: Some other action
-      run: |
-        echo "HELLO Variable: ${{ env.HELLO }}"
+        envFile: '.env.development|.env.test'
+    - run: |
+        echo ${{ steps.exportStep.outputs.DATABASE_NAME }}
+        echo ${{ steps.exportStep.outputs.HELLO }}
+      shell: bash
+# env.VAR1 == ''
+# env.VAR2 == ''
+# steps.exportStep.outputs.VAR1 == 'abc'
+# steps.exportStep.outputs.VAR2 == 'def'
   #   - uses: duskmoon314/action-load-env@v1
   #     id: load-env
   #     with:
