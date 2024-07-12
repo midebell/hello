@@ -37,17 +37,16 @@ jobs:
       #     echo ${{ env.AWS_REGION }}
       #     echo ${{ env.API_PATH }}
           # echo ${{ env.DATABASE_NAME }}
-      - name: Check Out Source Code
-        uses: actions/checkout@v4
-      - name: export env
-        uses: krisalay/export-env@v1.0.0
+      - name: Load .env file
+        uses: natterstefan/action-next-env@v1
         with:
-          filename: .github/variables/vars.env
-      - name: hello
+          working-directory: '.'
+          path: setup_dev.env
+          environment: dev
+
+      - name: Some other action
         run: |
-          echo ${{ env.AWS_REGION }}
-          echo ${{ env.API_PATH }}
-          echo ${{ env.DATABASE_NAME }}
+          echo "HELLO Variable: ${{ env.DATABASE_NAME }}"
 # In this example, all key from default section and
 # grouped into section named API_LOREM_IPSUM will be loaded to environment variables.
   # qa:
