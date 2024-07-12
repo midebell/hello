@@ -23,17 +23,25 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - uses: actions/checkout@v4
-    - uses: duskmoon314/action-load-env@v1
-      id: load-env
+    - name: Load .env file
+      uses: natterstefan/action-next-env@v1
       with:
-        files: |
-          .env.*
-  # do anything you want with the env or outputs
-    - run: |
-        echo ${{ steps.load-env.outputs.DATABASE_NAME }}
-        echo ${{ steps.load-env.outputs.HELLO }}
-        echo ${{ steps.load-env.outputs.AWS_S3_Enabled }}
-      shell: bash
+        environment: development
+
+    - name: Some other action
+      run: |
+        echo "HELLO Variable: ${{ env.HELLO }}"
+  #   - uses: duskmoon314/action-load-env@v1
+  #     id: load-env
+  #     with:
+  #       files: |
+  #         .env.*
+  # # do anything you want with the env or outputs
+  #   - run: |
+  #       echo ${{ steps.load-env.outputs.DATABASE_NAME }}
+  #       echo ${{ steps.load-env.outputs.HELLO }}
+  #       echo ${{ steps.load-env.outputs."AWS.S3.Enabled" }}
+  #     shell: bash
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       # - uses: actions/checkout@v4
