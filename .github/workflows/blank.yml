@@ -23,14 +23,20 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - uses: actions/checkout@v4
-    - name: Set ENV values from YAML
-      uses: dcarbone/yaml-to-env-action@v1.0.0
+    - name: Load environment from YAML
+      uses: doughepi/yaml-env-action
       with:
-        yaml-file: dev.yml
+        files: dev.yml 
+    - run: |
+        printenv
+    # - name: Set ENV values from YAML
+    #   uses: dcarbone/yaml-to-env-action@v1.0.0 #works with yml files
+    #   with:
+    #     yaml-file: dev.yml
 
-    - name: Print environment variables
-      run: |
-        echo ${{ env.SECRET_TOKEN }}
+    # - name: Print environment variables
+    #   run: |
+    #     echo ${{ env.SECRET_TOKEN }}
     # - uses: cardinalby/export-env-action@v2 #works
     #   id: exportStep
     #   with:
