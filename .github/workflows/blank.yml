@@ -40,9 +40,9 @@ jobs:
       - name: Load .env file
         uses: natterstefan/action-next-env@v1
         with:
-          working-directory: '.'
+          working-directory: .env.test
           path: setup_dev.env
-          environment: dev
+          environment: test
 
       - name: Some other action
         run: |
