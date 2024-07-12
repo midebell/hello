@@ -23,15 +23,26 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
-      - name: Load development vars
-        id: set_env_development
-        # if: |
-        #   github.ref == 'refs/heads/development'
-        uses: thgbrb/setup-environment@main
+      # - uses: actions/checkout@v4
+      # - name: Load development vars
+      #   id: set_env_development
+      #   # if: |
+      #   #   github.ref == 'refs/heads/development'
+      #   uses: thgbrb/setup-environment@main
+      #   with:
+      #     environment-config-file: "setup_dev.env"
+      #     # section-name: "API_LOREM_IPSUM"
+      # - name: hello
+      #   run: |
+      #     echo ${{ env.AWS_REGION }}
+      #     echo ${{ env.API_PATH }}
+          # echo ${{ env.DATABASE_NAME }}
+      - name: Check Out Source Code
+        uses: actions/checkout@v4
+      - name: export env
+        uses: krisalay/export-env@v1.0.0
         with:
-          environment-config-file: "setup_dev.env"
-          # section-name: "API_LOREM_IPSUM"
+          filename: setup_dev.env
       - name: hello
         run: |
           echo ${{ env.AWS_REGION }}
