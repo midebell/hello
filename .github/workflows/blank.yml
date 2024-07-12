@@ -23,12 +23,23 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - uses: actions/checkout@v4
-    - name: Load environment from YAML
-      uses: doughepi/yaml-env-action@main
+    - name: Load development vars
+      id: set_env_development
+      uses: thgbrb/setup-environment@main 
       with:
-        files: dev.yml 
-    - run: |
-        printenv
+        environment-config-file: "setup_dev.env"
+        section-name: "dev"
+    - name: hello
+      run: |
+        echo ${{ env.AWS_REGION }}
+        echo ${{ env.API_PATH }}
+        echo ${{ env.DATABASE_NAME }}
+    # - name: Load environment from YAML
+    #   uses: doughepi/yaml-env-action@main
+    #   with:
+    #     files: dev.yml 
+    # - run: |
+    #     printenv
     # - name: Set ENV values from YAML
     #   uses: dcarbone/yaml-to-env-action@v1.0.0 #works with yml files
     #   with:
