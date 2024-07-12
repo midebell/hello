@@ -23,10 +23,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - uses: actions/checkout@v4
-    - name: Load .env file
-      uses: natterstefan/action-next-env@v1
+    - name: export env
+      uses: krisalay/export-env@v1.0.0
       with:
-        environment: development
+        filename: .env.development
 
     - name: Some other action
       run: |
