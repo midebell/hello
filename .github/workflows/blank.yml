@@ -26,7 +26,7 @@ jobs:
     - uses: cardinalby/export-env-action@v2
       id: exportStep
       with:
-        envFile: '.env.development|.env.test'
+        envFile: '.env.development'
     - run: |
         echo ${{ steps.exportStep.outputs.DATABASE_NAME }}
         echo ${{ steps.exportStep.outputs.HELLO }}
