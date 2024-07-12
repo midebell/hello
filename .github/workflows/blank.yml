@@ -23,20 +23,25 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - uses: actions/checkout@v4
-    - uses: cardinalby/export-env-action@v2
-      id: exportStep
+    - name: Set ENV values from YAML
+      uses: dcarbone/yaml-to-env-action@v1.0.0
       with:
-        envFile: '.env.development|.env.test'
-    - run: |
-        echo ${{ env.HELLO }}
-        echo ${{ env.DATABASE_NAME }}
-        echo ${{ env.API_PATH }}
-      shell: bash
-# env.VAR1 == ''
-# env.VAR2 == ''
-# steps.exportStep.outputs.VAR1 == 'abc'
-# steps.exportStep.outputs.VAR2 == 'def'
-  #   - uses: duskmoon314/action-load-env@v1
+        yaml-file: dev.yml
+
+    - name: Print environment variables
+      run: |
+        printenv
+    # - uses: cardinalby/export-env-action@v2 #works
+    #   id: exportStep
+    #   with:
+    #     envFile: '.env.development|.env.test'
+    # - run: |
+    #     echo ${{ env.HELLO }}
+    #     echo ${{ env.DATABASE_NAME }}
+    #     echo ${{ env.API_PATH }}
+    #   shell: bash
+
+  #   - uses: duskmoon314/action-load-env@v1 #works
   #     id: load-env
   #     with:
   #       files: |
@@ -54,7 +59,7 @@ jobs:
       #   id: set_env_development
       #   # if: |
       #   #   github.ref == 'refs/heads/development'
-      #   uses: thgbrb/setup-environment@main
+      #   uses: thgbrb/setup-environment@main #works
       #   with:
       #     environment-config-file: "setup_dev.env"
       #     # section-name: "API_LOREM_IPSUM"
