@@ -28,7 +28,7 @@ jobs:
       uses: thgbrb/setup-environment@main 
       with:
         environment-config-file: "setup_dev.env"
-        section-name: "dev"
+        section-name: "qa"
     - name: hello
       run: |
         echo ${{ env.AWS_REGION }}
