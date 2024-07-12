@@ -40,13 +40,12 @@ jobs:
       - name: Load .env file
         uses: natterstefan/action-next-env@v1
         with:
-          working-directory: .env.test
-          path: setup_dev.env
+          path: .
           environment: test
 
       - name: Some other action
         run: |
-          echo "HELLO Variable: ${{ env.DATABASE_NAME }}"
+          echo "HELLO Variable: ${{ env.HELLO }}"
 # In this example, all key from default section and
 # grouped into section named API_LOREM_IPSUM will be loaded to environment variables.
   # qa:
