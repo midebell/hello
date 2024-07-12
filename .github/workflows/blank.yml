@@ -26,11 +26,11 @@ jobs:
     - uses: cardinalby/export-env-action@v2
       id: exportStep
       with:
-        envFile: '.env.development'
+        envFile: '.env.development|.env.test'
     - run: |
-        echo ${{ steps.exportStep.outputs.DATABASE_NAME }}
-        echo ${{ steps.exportStep.outputs.HELLO }}
         echo ${{ env.HELLO }}
+        echo ${{ env.DATABASE_NAME }}
+        echo ${{ env.API_PATH }}
       shell: bash
 # env.VAR1 == ''
 # env.VAR2 == ''
