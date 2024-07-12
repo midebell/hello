@@ -26,11 +26,12 @@ jobs:
       id: load-env
       with:
         files: |
-          .env.*
+          .env.development
   # do anything you want with the env or outputs
     - run: |
         echo ${{ steps.load-env.outputs.DATABASE_NAME }}
         echo ${{ steps.load-env.outputs.HELLO }}
+      shell: bash
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       # - uses: actions/checkout@v4
