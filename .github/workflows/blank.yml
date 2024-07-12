@@ -40,7 +40,7 @@ jobs:
       - name: Load .env file
         uses: natterstefan/action-next-env@v1
         with:
-          path: .
+          path: .env.test
           environment: test
 
       - name: Some other action
