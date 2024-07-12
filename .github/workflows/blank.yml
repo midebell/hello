@@ -32,7 +32,7 @@ jobs:
     - run: |
         echo ${{ steps.load-env.outputs.DATABASE_NAME }}
         echo ${{ steps.load-env.outputs.HELLO }}
-        echo ${{ steps.load-env.outputs.AWS.S3.Enabled }}
+        echo ${{ steps.load-env.outputs."AWS.S3.Enabled" }}
       shell: bash
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
