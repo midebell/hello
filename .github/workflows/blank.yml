@@ -42,7 +42,7 @@ jobs:
       - name: export env
         uses: krisalay/export-env@v1.0.0
         with:
-          filename: .variables/vars.env
+          filename: .github/variables/vars.env
       - name: hello
         run: |
           echo ${{ env.AWS_REGION }}
