@@ -43,10 +43,12 @@ jobs:
           for (const env of env_list) {
             if (env.match(/^prod$/))
               core.info(env)
-              selected.push(env)
-              return selected
           }
-          core.info(`Selected: ${selected}`)
+          for (const key of inputList) {
+            core.info(key)
+            selected.push(key)
+          }
+          core.info(`Selected: ${selected}`)    
     # - name: Load environment from YAML
     #   uses: doughepi/yaml-env-action@main
     #   with:
