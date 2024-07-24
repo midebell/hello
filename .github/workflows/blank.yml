@@ -43,7 +43,7 @@ jobs:
           for (const env of env_list) {
             for (const key in inputList) {
               if (env.match(/^prod$/)) {
-                selected.push(key)
+                selected.push(env)
               }
             }
           }
