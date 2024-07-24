@@ -23,7 +23,7 @@ on:
         default: true
         type: boolean
       env_list:
-        default: 'sandbox'
+        default: 'sandbox,nonprod,prod'
         type: string
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -46,15 +46,25 @@ jobs:
           const inputList = context.payload.inputs
           core.info(`Loaded inputs: ${JSON.stringify(inputList)}`)
           const selected = []
-          for (const key in inputList) {
-            if (!env_list.includes(key) && inputList[key] === 'true') {
-              selected.push(key)
-            }
+          for (const key in env_list) {
+            core.info(key)
           }
 
-          core.info(selected)   
-          core.info(env_list) 
+  # core.info(selected)   
+  # core.info(env_list) 
 
+  # const env_list = process.env.env_list.split(',')
+  # const inputList = context.payload.inputs
+  # core.info(`Loaded inputs: ${JSON.stringify(inputList)}`)
+  # const selected = []
+  # for (const key in inputList) {
+  #   if (env_list.includes(key) && inputList[key] === 'true') {
+  #     selected.push(key)
+  #   }
+  # }
+
+  # core.info(selected)   
+  # core.info(env_list) 
     # for (const env of env_list) {
     #   for (const key in inputList) {
     #     if (env.match(/^prod$/) && inputList[key] === 'true') {
