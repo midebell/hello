@@ -54,7 +54,7 @@ jobs:
             }
           }
           let unique = [...new Set(selected)];
-          core.info(selected) 
+          core.info(unique) 
 
   # core.info(selected)   
   # core.info(env_list) 
