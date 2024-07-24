@@ -53,6 +53,7 @@ jobs:
               }
             }
           }
+          let unique = [...new Set(selected)];
           core.info(selected) 
 
   # core.info(selected)   
