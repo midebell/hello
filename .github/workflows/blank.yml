@@ -41,13 +41,12 @@ jobs:
           core.info(`Loaded inputs: ${JSON.stringify(inputList)}`)
           const selected = []
           for (const env of env_list) {
-            if (env.match(/^prod$/))
-              core.info(env)
+            for (const key in inputList) {
+              if (env.match(/^(key)$/))
+                selected.push(key)
+            }
           }
-          for (const key in inputList) {
-            core.info(key)
-            selected.push(key)
-          }
+
           core.info(`Selected: ${selected}`)    
     # - name: Load environment from YAML
     #   uses: doughepi/yaml-env-action@main
@@ -59,7 +58,11 @@ jobs:
     #   uses: dcarbone/yaml-to-env-action@v1.0.0 #works with yml files
     #   with:
     #     yaml-file: dev.yml
-
+          #  core.info(key)
+          # for (const key in inputList) {
+          #   core.info(key)
+          #   selected.push(key)
+          # }
     # - name: Print environment variables
     #   run: |
     #     echo ${{ env.SECRET_TOKEN }}
