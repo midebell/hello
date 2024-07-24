@@ -55,7 +55,9 @@ jobs:
           }
           let unique = [...new Set(selected)];
           core.info(unique) 
-
+          core.setOutput('selected', unique)
+    - run: |
+        echo ${{ steps.set-result.outputs.unique }}
   # core.info(selected)   
   # core.info(env_list) 
   # core.info(env_list[key])
