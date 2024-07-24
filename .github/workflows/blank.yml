@@ -48,8 +48,8 @@ jobs:
           const selected = []
           for (const env in env_list) {
             for (const key in inputList) {
-              if (env_list[env].match(/^prod$/) && inputList[key] === 'true') {
-                selected.push(env)
+              if (env_list[env].includes(key) && inputList[key] === 'true') {
+                selected.push(key)
               }
             }
           }
