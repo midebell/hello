@@ -55,6 +55,7 @@ jobs:
           }
           let unique = [...new Set(selected)];
           core.info(unique) 
+          core.info(`Selected inputs: ${unique}`)
           core.setOutput('selected', unique.join(','))
     - run: |
         echo ${{ steps.set-result.outputs.selected }}
