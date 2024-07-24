@@ -44,7 +44,7 @@ jobs:
             if (env.match(/^prod$/))
               core.info(env)
           }
-          for (const key of inputList) {
+          for (const key in inputList) {
             core.info(key)
             selected.push(key)
           }
