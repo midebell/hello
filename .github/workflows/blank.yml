@@ -49,7 +49,7 @@ jobs:
           }
 
           core.info(selected)   
-
+          core.info(env_list) 
 
     # for (const env of env_list) {
     #   for (const key in inputList) {
