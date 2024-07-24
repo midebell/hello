@@ -47,7 +47,7 @@ jobs:
           core.info(`Loaded inputs: ${JSON.stringify(inputList)}`)
           const selected = []
           for (const key in env_list) {
-            core.info(key)
+            core.info([key])
           }
 
   # core.info(selected)   
