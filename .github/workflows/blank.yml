@@ -48,7 +48,7 @@ jobs:
             }
           }
 
-          core.info(selected).unique()   
+          core.info(selected.unique()) 
 
 
     # for (const env of env_list) {
