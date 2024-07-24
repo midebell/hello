@@ -46,7 +46,7 @@ jobs:
             }
           }
 
-          core.info(`Selected: ${selected}`)   
+          core.info(selected)   
 
 
     # for (const env of env_list) {
