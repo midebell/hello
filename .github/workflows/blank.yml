@@ -12,7 +12,16 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
+    inputs:
+      sandbox:
+        default: true
+        type: boolean
+      nonprod:
+        default: true
+        type: boolean
+      prod:
+        default: true
+        type: boolean
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -23,17 +32,17 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - uses: actions/checkout@v4
-    - name: Load development vars
-      id: set_env_development
-      uses: thgbrb/setup-environment@main 
+    - uses: actions/github-script@v7
+      id: set-result
       with:
-        environment-config-file: "setup_dev.env"
-        section-name: "qa"
-    - name: hello
-      run: |
-        echo ${{ env.AWS_REGION }}
-        echo ${{ env.API_PATH }}
-        echo ${{ env.DATABASE_NAME }}
+        script: |
+          const env_list = ['sandbox', 'nonprod', 'prod']
+          const inputList = context.payload.inputs
+          core.info(`Loaded inputs: ${JSON.stringify(inputList)}`)
+          const selected = []
+          for (const env of env_list) {
+            core.info(env)
+          }
     # - name: Load environment from YAML
     #   uses: doughepi/yaml-env-action@main
     #   with:
