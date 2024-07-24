@@ -41,7 +41,8 @@ jobs:
           core.info(`Loaded inputs: ${JSON.stringify(inputList)}`)
           const selected = []
           for (const env of env_list) {
-            core.info(env)
+            if (env.match(/sandbox/))
+              core.info(env)
           }
     # - name: Load environment from YAML
     #   uses: doughepi/yaml-env-action@main
