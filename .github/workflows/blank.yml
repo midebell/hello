@@ -44,7 +44,7 @@ jobs:
           const selected = []
           for (const key in inputList) {
             if (env_list.includes(key) && inputList[key] === 'true') {
-              selected.push(key)
+              selected.push(env_list)
             }
           }
 
