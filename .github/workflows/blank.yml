@@ -43,6 +43,7 @@ jobs:
           for (const env of env_list) {
             if (env.match(/sandbox/))
               core.info(env)
+              selected.push(env)
           }
     # - name: Load environment from YAML
     #   uses: doughepi/yaml-env-action@main
