@@ -45,6 +45,7 @@ jobs:
               core.info(env)
               selected.push(env)
           }
+          core.info(`Selected: ${selected}`)
     # - name: Load environment from YAML
     #   uses: doughepi/yaml-env-action@main
     #   with:
