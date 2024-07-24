@@ -46,13 +46,18 @@ jobs:
           const inputList = context.payload.inputs
           core.info(`Loaded inputs: ${JSON.stringify(inputList)}`)
           const selected = []
-          for (const key in env_list) {
-            core.info(env_list[key])
+          for (const env in env_list) {
+            for (const key in inputList) {
+              if (env_list[env].includes(key) && inputList[key] === 'true') {
+                selected.push(key)
+              }
+            }
           }
+          core.info(selected) 
 
   # core.info(selected)   
   # core.info(env_list) 
-
+  # core.info(env_list[key])
   # const env_list = process.env.env_list.split(',')
   # const inputList = context.payload.inputs
   # core.info(`Loaded inputs: ${JSON.stringify(inputList)}`)
