@@ -22,6 +22,10 @@ on:
       prod:
         default: true
         type: boolean
+      env_list:
+        default: 'sandbox,nonprod,prod'
+        type: string
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -35,7 +39,7 @@ jobs:
     - uses: actions/github-script@v7
       id: set-result
       env:
-        env_list: 'sandbox,nonprod,prod'
+        env_list: ${{ inputs.env_list }}
       with:
         script: |
           const env_list = process.env.env_list.split(',')
