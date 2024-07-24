@@ -44,13 +44,11 @@ jobs:
           const selected = []
           for (const key in inputList) {
             if (env_list.includes(key) && inputList[key] === 'true') {
-              selected.push(env_list)
+              selected.push(key)
             }
           }
 
-
-          let unique = [...new Set(selected)]
-          core.info(unique) 
+          core.info(selected)   
 
 
     # for (const env of env_list) {
