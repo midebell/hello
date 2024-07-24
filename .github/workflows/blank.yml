@@ -44,6 +44,7 @@ jobs:
             if (env.match(/^prod$/))
               core.info(env)
               selected.push(env)
+              return selected
           }
           core.info(`Selected: ${selected}`)
     # - name: Load environment from YAML
