@@ -36,19 +36,26 @@ jobs:
       id: set-result
       with:
         script: |
-          const env_list = ['sandbox', 'nonprod', 'prod']
+          const env_list = 'sandbox,nonprod,prod'
           const inputList = context.payload.inputs
           core.info(`Loaded inputs: ${JSON.stringify(inputList)}`)
           const selected = []
-          for (const env of env_list) {
-            for (const key in inputList) {
-              if (env.match(/^prod$/) && inputList[key] === 'true') {
-                selected.push(key)
-              }
+          for (const key in inputList) {
+            if (env_list.split(',').includes(key) && inputList[key] === 'true') {
+              selected.push(key)
             }
           }
 
-          core.info(`Selected: ${selected}`)    
+          core.info(`Selected: ${selected}`)   
+
+
+    # for (const env of env_list) {
+    #   for (const key in inputList) {
+    #     if (env.match(/^prod$/) && inputList[key] === 'true') {
+    #       selected.push(key)
+    #     }
+    #   }
+    # } 
     # - name: Load environment from YAML
     #   uses: doughepi/yaml-env-action@main
     #   with:
