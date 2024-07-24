@@ -42,7 +42,7 @@ jobs:
           const selected = []
           for (const env of env_list) {
             for (const key in inputList) {
-              if (env.match(/^key$/))
+              if (env.match(/^prod$/))
                 selected.push(key)
             }
           }
