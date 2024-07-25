@@ -36,29 +36,29 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/github-script@v7
-      id: set-result
-      env:
-        env_list: ${{ inputs.env_list }}
-      with:
-        script: |
-          const env_list = process.env.env_list.split(',')
-          const inputList = context.payload.inputs
-          core.info(`Loaded inputs: ${JSON.stringify(inputList)}`)
-          const selected = []
-          for (const env in env_list) {
-            for (const key in inputList) {
-              if (env_list[env].includes(key) && inputList[key] === 'true') {
-                selected.push(key)
-              }
-            }
-          }
-          let unique = [...new Set(selected)];
-          core.info(unique) 
-          core.info(`Selected inputs: ${unique}`)
-          core.setOutput('selected', unique.join(','))
-    - run: |
-        echo ${{ steps.set-result.outputs.selected }}
+    # - uses: actions/github-script@v7
+    #   id: set-result
+    #   env:
+    #     env_list: ${{ inputs.env_list }}
+    #   with:
+    #     script: |
+    #       const env_list = process.env.env_list.split(',')
+    #       const inputList = context.payload.inputs
+    #       core.info(`Loaded inputs: ${JSON.stringify(inputList)}`)
+    #       const selected = []
+    #       for (const env in env_list) {
+    #         for (const key in inputList) {
+    #           if (env_list[env].includes(key) && inputList[key] === 'true') {
+    #             selected.push(key)
+    #           }
+    #         }
+    #       }
+    #       let unique = [...new Set(selected)];
+    #       core.info(unique) 
+    #       core.info(`Selected inputs: ${unique}`)
+    #       core.setOutput('selected', unique.join(','))
+    # - run: |
+    #     echo ${{ steps.set-result.outputs.selected }}
   # core.info(selected)   
   # core.info(env_list) 
   # core.info(env_list[key])
@@ -81,12 +81,12 @@ jobs:
     #     }
     #   }
     # } 
-    # - name: Load environment from YAML
-    #   uses: doughepi/yaml-env-action@main
-    #   with:
-    #     files: dev.yml 
-    # - run: |
-    #     printenv
+    - name: Load environment from YAML
+      uses: doughepi/yaml-env-action@main
+      with:
+        files: dev.yml 
+    - run: |
+        printenv
     # - name: Set ENV values from YAML
     #   uses: dcarbone/yaml-to-env-action@v1.0.0 #works with yml files
     #   with:
